@@ -630,12 +630,14 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Collab: 1
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 8698eecb-1627-4450-a813-f6d4874ba14b
-  projectName: GameJam2018
-  organizationId: launderex619
+  cloudProjectId: 82ae183d-4157-427f-8b82-87eea221c071
+  projectName: GameJam2018 (1)
+  organizationId: marco-3502131
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
