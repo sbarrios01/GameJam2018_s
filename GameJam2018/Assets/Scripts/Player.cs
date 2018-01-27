@@ -45,19 +45,19 @@ public class Player : MonoBehaviour
     {
         _EjeX = Input.GetAxis("Horizontal");
         _EjeY = Input.GetAxis("Vertical");
-        if (_EjeX < 0)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             _LastMovement = new Vector3(-1, 0, 0);
         }
-        else if (_EjeX > 0)
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             _LastMovement = new Vector3(1, 0, 0);
         }
-        if(_EjeY < 0)
+        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow))
         {
             _LastMovement = new Vector3(0, -1, 0);
         }
-        if (_EjeY > 0)
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.DownArrow))
         {
             _LastMovement = new Vector3(0, 1, 0);
         }
