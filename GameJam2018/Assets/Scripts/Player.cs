@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private int _distance_player_attack;
 
-	const int Screen_Width = 600;
-	const int Screen_Heigth = 800;
+	const int Screen_Width = 1115;
+	const int Screen_Heigth = 1115;
     void Start()
     {
         
