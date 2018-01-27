@@ -316,33 +316,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114573923163892802, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
         type: 2}
-      propertyPath: _Speed
-      value: 1000
+      propertyPath: _distance_player_attack
+      value: 145
       objectReference: {fileID: 0}
     - target: {fileID: 212911142877610448, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
         type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e6f195d01fd10a545ad41e64c71b0346,
-        type: 3}
-    - target: {fileID: 61752073625461926, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
+      propertyPath: m_Size.x
+      value: 6.4
       objectReference: {fileID: 0}
-    - target: {fileID: 1977843109244850, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 114573923163892802, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
+    - target: {fileID: 212911142877610448, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
         type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1889291347}
-    - target: {fileID: 61752073625461926, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
-        type: 2}
-      propertyPath: m_UsedByEffector
-      value: 0
+      propertyPath: m_Size.y
+      value: 6.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
@@ -352,28 +337,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4725812356886590, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
     type: 2}
   m_PrefabInternal: {fileID: 1791756230}
---- !u!1 &1889291347 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1977843109244850, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1791756230}
---- !u!95 &1889291348
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1889291347}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 02e3f297133dfbd48b7b2d3f4082074b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1962273539
 GameObject:
   m_ObjectHideFlags: 0
