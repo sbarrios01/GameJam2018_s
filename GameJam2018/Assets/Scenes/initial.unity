@@ -314,6 +314,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114573923163892802, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
+        type: 2}
+      propertyPath: _distance_player_attack
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 212911142877610448, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 6.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 212911142877610448, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 6.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
   m_IsPrefabParent: 0
