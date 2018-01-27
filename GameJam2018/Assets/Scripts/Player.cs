@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject player; //player debe tener un rigidbody
+    private Rigidbody2D myRigidBody;
 
     private float _EjeX;      //movimiento en el eje x por velocidad
     private float _EjeY;      //movimiento en el eje y por velocidad
@@ -32,21 +34,29 @@ public class Player : MonoBehaviour
     const int Screen_Heigth = 1115;
     void Start()
     {
+        myRigidBody = player.GetComponent<Rigidbody2D>();
         _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
         _atackCooldown = 0;
  
     }
 
-    // Update is called once per frame
+
+    /*
     void Update()
     {
         LocationX = transform.position.x;
         LocationY = transform.position.y;
         Movement();
         Atack();
+    }*/
+
+    void FixedUpdate()
+    {
+        Movement();
+        Attack();
     }
 
-    private void Atack()
+    private void Attack()
     {
         _atackCooldown += Time.deltaTime;
         if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'a')
@@ -78,29 +88,31 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        _EjeX = Input.GetAxis("Horizontal");
-        _EjeY = Input.GetAxis("Vertical");
+        //_EjeX = Input.GetAxis("Horizontal");
+        //_EjeY = Input.GetAxis("Vertical");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            _Direction = 'a';
+            myRigidBody.velocity = new Vector3(-200, 0, 0);
             _LastMovement = new Vector3(-_distance_player_attack, 0, 0);
+
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            _Direction = 'd';
+            myRigidBody.velocity = new Vector3(200, 0, 0);
             _LastMovement = new Vector3(_distance_player_attack, 0, 0);
         }
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            _Direction = 'w';
+            myRigidBody.velocity = new Vector3(0, 200, 0);
             _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            _Direction = 's';
+            myRigidBody.velocity = new Vector3(0, -200, 0);
             _LastMovement = new Vector3(0, -_distance_player_attack - 30, 0);
         }
 
+        /*
         transform.Translate(new Vector3(_EjeX, _EjeY, 0) * _Speed * Time.deltaTime);
 
         if (transform.position.x > Screen_Width)
@@ -119,6 +131,6 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, -Screen_Heigth, 0);
         }
-
+        */
     }
 }
