@@ -35,6 +35,12 @@ public class TileGeneration : MonoBehaviour {
                                 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//0
     void Awake()
     {
+		//-------Random layout for testing--------
+		Random.seed = (int)System.DateTime.Now.Ticks;
+		random_tiles ();
+
+		//--------------------------------------
+
         int k = 0;
         //x     y   z
         Vector3 coordenadas = new Vector3(-1150,1150, 0);
@@ -53,18 +59,30 @@ public class TileGeneration : MonoBehaviour {
                 }
                 coordenadas.x += tileSize;
                 k++;
+				///-----
+				if (k > 100) {
+					random_tiles ();
+					k = 0;
+				}
+				/// 
             }
             coordenadas.y -= tileSize;
             coordenadas.x = -1150;
         } 
     }
-	// Use this for initialization
-	void Start () {
-		
-	}
+
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void random_tiles(){
+		for (int counter = 0; counter < 100; counter++)
+			if (Random.value >= 0.5f){
+				map[counter] = 1;
+			} else {
+				map[counter] = 0;
+			}
 	}
 }
