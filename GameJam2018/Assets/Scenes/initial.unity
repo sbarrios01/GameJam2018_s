@@ -328,7 +328,7 @@ Prefab:
     - target: {fileID: 61752073625461926, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
         type: 2}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1977843109244850, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
       propertyPath: m_TagString
@@ -339,6 +339,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1889291347}
+    - target: {fileID: 61752073625461926, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
   m_IsPrefabParent: 0

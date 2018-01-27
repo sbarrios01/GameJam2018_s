@@ -101,16 +101,17 @@ public class Player : MonoBehaviour
             myRigidBody.velocity = new Vector3(200, 0, 0);
             _LastMovement = new Vector3(_distance_player_attack, 0, 0);
         }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             myRigidBody.velocity = new Vector3(0, 200, 0);
             _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
         }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             myRigidBody.velocity = new Vector3(0, -200, 0);
             _LastMovement = new Vector3(0, -_distance_player_attack - 30, 0);
         }
+		
 
         /*
         transform.Translate(new Vector3(_EjeX, _EjeY, 0) * _Speed * Time.deltaTime);
