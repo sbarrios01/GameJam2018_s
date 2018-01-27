@@ -102,6 +102,7 @@ MonoBehaviour:
   _Atack: {fileID: 1757406746361178, guid: 8d7a3e12206ccf642a54fc3fd8d4a33a, type: 2}
   _Speed: 1000
   _distance_player_attack: 70
+  _DeltaTime: 1
 --- !u!212 &212911142877610448
 SpriteRenderer:
   m_ObjectHideFlags: 1
