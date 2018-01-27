@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
     private float _EjeX;      //movimiento en el eje x por velocidad
+    [SerializeField]
     private float _EjeY;      //movimiento en el eje y por velocidad
 
     public float LocationX;
     public float LocationY;
+    private Vector3 _LastMovement;
+    [SerializeField]
+    private GameObject _Atack;
 
     [SerializeField]
     private float _Speed;      //velocidad en cuandros por segundo
@@ -25,12 +30,37 @@ public class Player : MonoBehaviour
         LocationX = transform.position.x;
         LocationY = transform.position.y;
         Movement();
+        Atack();
+    }
+
+    private void Atack()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.identity);
+        }
     }
 
     private void Movement()
     {
         _EjeX = Input.GetAxis("Horizontal");
         _EjeY = Input.GetAxis("Vertical");
+        if (_EjeX < 0)
+        {
+            _LastMovement = new Vector3(-1, 0, 0);
+        }
+        else if (_EjeX > 0)
+        {
+            _LastMovement = new Vector3(1, 0, 0);
+        }
+        if(_EjeY < 0)
+        {
+            _LastMovement = new Vector3(0, -1, 0);
+        }
+        if (_EjeY > 0)
+        {
+            _LastMovement = new Vector3(0, 1, 0);
+        }
 
         transform.Translate(new Vector3(_EjeX, _EjeY, 0f) * _Speed * Time.deltaTime);
 
