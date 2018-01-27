@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+
     private float _EjeX;      //movimiento en el eje x por velocidad
     private float _EjeY;      //movimiento en el eje y por velocidad
 
     private float LocationX;
-	private float LocationY;
+    private float LocationY;
     private Vector3 _LastMovement;
     [SerializeField]
     private GameObject _Atack;
+    private float _atackCooldown;
 
     [SerializeField]
     private int _Speed;      //velocidad en cuandros por segundo
-                               // Use this for initialization
-	[SerializeField]
-	private int _distance_player_attack;
+                             // Use this for initialization
+    [SerializeField]
+    private int _distance_player_attack;
 
-	const int Screen_Width = 1115;
-	const int Screen_Heigth = 1115;
+    [SerializeField]
+    private float _DeltaTime;
+    const int Screen_Width = 1115;
+    const int Screen_Heigth = 1115;
     void Start()
     {
-		_LastMovement = new Vector3(0, _distance_player_attack+30, 0);
-
+        _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
+        _atackCooldown = 0;
+ 
     }
 
     // Update is called once per frame
@@ -39,10 +43,13 @@ public class Player : MonoBehaviour
 
     private void Atack()
     {
-        if (Input.GetButton("Fire1"))
+        _atackCooldown += Time.deltaTime;
+        if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime)
         {
+            _atackCooldown = 0;
             Instantiate(_Atack, transform.position + _LastMovement, Quaternion.identity);
         }
+
     }
 
     private void Movement()
@@ -55,34 +62,34 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-			_LastMovement = new Vector3(_distance_player_attack, 0, 0);
+            _LastMovement = new Vector3(_distance_player_attack, 0, 0);
         }
-        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-			_LastMovement = new Vector3(0, _distance_player_attack+30, 0);
+            _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-			_LastMovement = new Vector3(0, -_distance_player_attack-30, 0);
+            _LastMovement = new Vector3(0, -_distance_player_attack - 30, 0);
         }
 
         transform.Translate(new Vector3(_EjeX, _EjeY, 0) * _Speed * Time.deltaTime);
 
-		if (transform.position.x > Screen_Width)
+        if (transform.position.x > Screen_Width)
         {
-			transform.position = new Vector3(Screen_Width, transform.position.y, 0);
+            transform.position = new Vector3(Screen_Width, transform.position.y, 0);
         }
-		else if (transform.position.x < -Screen_Width)
+        else if (transform.position.x < -Screen_Width)
         {
-			transform.position = new Vector3(-Screen_Width, transform.position.y, 0);
+            transform.position = new Vector3(-Screen_Width, transform.position.y, 0);
         }
-		if (transform.position.y > Screen_Heigth)
+        if (transform.position.y > Screen_Heigth)
         {
-			transform.position = new Vector3(transform.position.x, Screen_Heigth, 0);
+            transform.position = new Vector3(transform.position.x, Screen_Heigth, 0);
         }
-		else if (transform.position.y < -Screen_Heigth)
+        else if (transform.position.y < -Screen_Heigth)
         {
-			transform.position = new Vector3(transform.position.x, -Screen_Heigth, 0);
+            transform.position = new Vector3(transform.position.x, -Screen_Heigth, 0);
         }
 
     }
