@@ -33,5 +33,23 @@ public class Player : MonoBehaviour
         _EjeY = Input.GetAxis("Vertical");
 
         transform.Translate(new Vector3(_EjeX, _EjeY, 0f) * _Speed * Time.deltaTime);
+
+        if (transform.position.x > 6.15)
+        {
+            transform.position = new Vector3(6.15f, transform.position.y, 0f);
+        }
+        else if (transform.position.x < -6.15)
+        {
+            transform.position = new Vector3(-6.15f, transform.position.y, 0f);
+        }
+        if (transform.position.y > 4.5)
+        {
+            transform.position = new Vector3(transform.position.x, 4.5f, 0f);
+        }
+        else if (transform.position.y < -4.5)
+        {
+            transform.position = new Vector3(transform.position.x, -4.5f, 0f);
+        }
+
     }
 }
