@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 	const int Screen_Heigth = 1115;
     void Start()
     {
-        
+		_LastMovement = new Vector3(0, _distance_player_attack+30, 0);
 
     }
 
@@ -57,13 +57,13 @@ public class Player : MonoBehaviour
         {
 			_LastMovement = new Vector3(_distance_player_attack, 0, 0);
         }
-        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow))
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-			_LastMovement = new Vector3(0, -_distance_player_attack, 0);
+			_LastMovement = new Vector3(0, _distance_player_attack+30, 0);
         }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-			_LastMovement = new Vector3(0, _distance_player_attack, 0);
+			_LastMovement = new Vector3(0, -_distance_player_attack-30, 0);
         }
 
         transform.Translate(new Vector3(_EjeX, _EjeY, 0) * _Speed * Time.deltaTime);
