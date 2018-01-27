@@ -8,8 +8,11 @@ public class Player : MonoBehaviour
     private float _EjeX;      //movimiento en el eje x por velocidad
     private float _EjeY;      //movimiento en el eje y por velocidad
 
-    private float LocationX;
-    private float LocationY;
+    [SerializeField]
+    public float LocationX;
+    [SerializeField]
+    public float LocationY;
+
     private Vector3 _LastMovement;
     [SerializeField]
     private GameObject _Atack;
@@ -20,6 +23,8 @@ public class Player : MonoBehaviour
                              // Use this for initialization
     [SerializeField]
     private int _distance_player_attack;
+
+    private char _Direction; //a <-, w up, d ->, s down;
 
     [SerializeField]
     private float _DeltaTime;
@@ -44,12 +49,31 @@ public class Player : MonoBehaviour
     private void Atack()
     {
         _atackCooldown += Time.deltaTime;
-        if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime)
+        if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'a')
+        {
+            _atackCooldown = 0;
+            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(0, 0, 0)));
+        }
+        else if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'w')
+        {
+            _atackCooldown = 0;
+            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(180, 180, 90)));
+        }
+        else if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'd')
+        {
+            _atackCooldown = 0;
+            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(0, 180, 0)));
+        }
+        else if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 's')
+        {
+            _atackCooldown = 0;
+            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(-180, -180, -90)));
+        }
+        else if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime)
         {
             _atackCooldown = 0;
             Instantiate(_Atack, transform.position + _LastMovement, Quaternion.identity);
         }
-
     }
 
     private void Movement()
@@ -58,18 +82,22 @@ public class Player : MonoBehaviour
         _EjeY = Input.GetAxis("Vertical");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
+            _Direction = 'a';
             _LastMovement = new Vector3(-_distance_player_attack, 0, 0);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
+            _Direction = 'd';
             _LastMovement = new Vector3(_distance_player_attack, 0, 0);
         }
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
+            _Direction = 'w';
             _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
+            _Direction = 's';
             _LastMovement = new Vector3(0, -_distance_player_attack - 30, 0);
         }
 
