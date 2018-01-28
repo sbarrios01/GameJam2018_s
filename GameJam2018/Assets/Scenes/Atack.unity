@@ -173,7 +173,7 @@ Prefab:
     - target: {fileID: 224793395888001056, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 247.8
+      value: 227.2
       objectReference: {fileID: 0}
     - target: {fileID: 224793395888001056, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
@@ -760,7 +760,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -20
-  m_Sprite: {fileID: 21300000, guid: 89bdfa5ccfdc8e24fa8c030387fd322f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2e513aed54a56c408a55c7f6fda627e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -833,22 +833,22 @@ Prefab:
     - target: {fileID: 224793395888001056, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 404.45505
+      value: 404.1
       objectReference: {fileID: 0}
     - target: {fileID: 224793395888001056, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 273.7
+      value: 251.87
       objectReference: {fileID: 0}
     - target: {fileID: 224793395888001056, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 109.33
+      value: 127.3
       objectReference: {fileID: 0}
     - target: {fileID: 224793395888001056, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 40.11
+      value: 87.6
       objectReference: {fileID: 0}
     - target: {fileID: 224793395888001056, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
@@ -883,7 +883,7 @@ Prefab:
     - target: {fileID: 114610861445751684, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
       propertyPath: m_FontData.m_FontSize
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114610861445751684, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
@@ -893,11 +893,18 @@ Prefab:
     - target: {fileID: 114610861445751684, guid: d6f7ffb512b2292448ad72ac77f28d43,
         type: 2}
       propertyPath: m_Text
-      value: 'Score:'
+      value: 'Hearts
+
+        Recovered:'
       objectReference: {fileID: 0}
     - target: {fileID: 1842164233138666, guid: d6f7ffb512b2292448ad72ac77f28d43, type: 2}
       propertyPath: m_Name
       value: ScoreText
+      objectReference: {fileID: 0}
+    - target: {fileID: 114610861445751684, guid: d6f7ffb512b2292448ad72ac77f28d43,
+        type: 2}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6f7ffb512b2292448ad72ac77f28d43, type: 2}
