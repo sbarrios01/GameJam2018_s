@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         moveVelocity = moveInput * moveSpeed;
 
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             Atack();
         }
@@ -101,22 +101,41 @@ public class PlayerController : MonoBehaviour
         m_animator.SetBool("down", false);
         m_animator.SetBool(name, true);
     }
+    private void SetAttack(string name)
+    {
+        EndAnimation();
+        m_animator.SetBool(name, true);
+        Invoke("EndAnimation", .5f);
+    }
+    private void EndAnimation()
+    {
+        m_animator.SetBool("rigthAttack", false);
+        m_animator.SetBool("leftAttack", false);
+        m_animator.SetBool("upAttack", false);
+        m_animator.SetBool("downAttack", false);
+    }
 
     public void Atack()
     {
         if (direction == "rigth")
         {
+            m_animator.StopPlayback();
+            SetAttack("rigthAttack");
+            
             ataques[0].StartAtack(m_GeneralVars.healht);
         }else if (direction == "left")
         {
+            SetAttack("leftAttack");
             ataques[1].StartAtack(m_GeneralVars.healht);
         }
         else if (direction == "up")
         {
+            SetAttack("upAttack");
             ataques[2].StartAtack(m_GeneralVars.healht);
         }
         else if (direction == "down")
         {
+            SetAttack("downAttack");
             ataques[3].StartAtack(m_GeneralVars.healht);
         }
         //yield return new WaitForSeconds(0.5f);

@@ -63,27 +63,27 @@ public class Player2 : MonoBehaviour
     private void Attack()
     {
         _atackCooldown += Time.deltaTime;
-        if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'a')
+        if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'a')
         {
             _atackCooldown = 0;
             Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
-        else if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'w')
+        else if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'w')
         {
             _atackCooldown = 0;
             Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(180, 180, 90)));
         }
-        else if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'd')
+        else if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'd')
         {
             _atackCooldown = 0;
             Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(0, 180, 0)));
         }
-        else if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime && _Direction == 's')
+        else if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime && _Direction == 's')
         {
             _atackCooldown = 0;
             Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(-180, -180, -90)));
         }
-        else if (Input.GetButton("Fire1") && _atackCooldown > _DeltaTime)
+        else if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime)
         {
             _atackCooldown = 0;
             Instantiate(_Atack, transform.position + _LastMovement, Quaternion.identity);
