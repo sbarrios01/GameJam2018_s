@@ -4,26 +4,31 @@ using UnityEngine;
 
 public class GeneralVars : MonoBehaviour {
 
-    public int health = 3;
+    public GameObject player;
+
+    public int health;
 
     [HideInInspector]
     public bool isDead = false;
 
 	// Use this for initialization
 	void Start () {
-		
+
+        health = 3;
+        Debug.Log("1.- Health:" +health);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	void FixedUpdate () {
+        
+        Debug.Log("2.- Health:" + health);
         if (health > 3)
             health = 3;
 
         if (health <= 0 && !isDead)
         {
             isDead = true;
-            Restart();
+           // Restart();
         }
 
 	}

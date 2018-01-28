@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthAndDamage : MonoBehaviour {
 
     public int playerHitPoints;
+    private int maxHealth;
     public GameObject heart;
     private bool isDead;
 
@@ -13,6 +14,7 @@ public class HealthAndDamage : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        maxHealth = playerHitPoints;
         Vector3 coordenadas = new Vector3(-1500, 1000, 0);
         hearts = new List<GameObject>();
         GameObject newHeart; 
@@ -37,7 +39,7 @@ public class HealthAndDamage : MonoBehaviour {
 
     public void takeDamage(int damage)
     {
-        Debug.Log("Tengo " + playerHitPoints + " de vida, tomando " + damage + " de daño");
+        Debug.Log("- Tenia " + playerHitPoints + " de vida, ahora tengo " + (playerHitPoints - damage) );
         hearts[playerHitPoints - 1].SetActive(false);
         playerHitPoints -= damage;
         if (playerHitPoints <= 0)
@@ -45,6 +47,17 @@ public class HealthAndDamage : MonoBehaviour {
             isDead = true;
             string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        }
+    }
+
+    public void recoverDamage(int damage)
+    {
+        Debug.Log("+ Tenia " + playerHitPoints + " de vida, ahora tengo " + (playerHitPoints + damage));
+        int recover = playerHitPoints;
+        if (playerHitPoints + damage < maxHealth)
+        {
+            playerHitPoints += damage;
+            hearts[playerHitPoints].SetActive(true);
         }
     }
 }
