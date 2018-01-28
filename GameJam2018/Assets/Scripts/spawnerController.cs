@@ -13,6 +13,12 @@ public class spawnerController : MonoBehaviour {
 	[SerializeField]
 	private int distancefromspawner;
 	private bool direction = true;
+	[SerializeField]
+	private Vector2 Startposition = new Vector2 (-800, 800);
+
+
+
+
 	// Use this for initialization
 	void Start () {
 		myRigidBody = spawner.GetComponent<Rigidbody2D>();
@@ -50,6 +56,7 @@ public class spawnerController : MonoBehaviour {
 		if (other.gameObject.tag == "Wall" )
 			direction=!direction;
 		if (other.gameObject.tag == "BORDER") {
+			Instantiate (spawner, Startposition,new Quaternion(0,0,0,0.0f));
 			Destroy(this.gameObject);
 		}
 	}
