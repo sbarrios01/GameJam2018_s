@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114179269713834068}
   - component: {fileID: 50610628182606678}
   - component: {fileID: 61213710565751602}
-  - component: {fileID: 114940813418842830}
   - component: {fileID: 95130986024469178}
   m_Layer: 0
   m_Name: EnemyA
@@ -448,23 +447,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensor: 1
   scopeOfSensor: {x: -1, y: 0, z: 0}
---- !u!114 &114940813418842830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1114125735117864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2923ac740c7a4ba44994bf5af911fc89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  breakTime: 1
-  scapeTime: 2
-  deadTime: 5
-  isFinish: 0
-  stolenLife: 0
 --- !u!212 &212369466669035678
 SpriteRenderer:
   m_ObjectHideFlags: 1

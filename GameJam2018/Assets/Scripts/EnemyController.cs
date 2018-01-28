@@ -51,6 +51,9 @@ public class EnemyController : MonoBehaviour
              //
              Invoke("DestroyEnemy", deadTime);
          }
+		if (other.gameObject.tag == "BORDER") {
+			Destroy(this.gameObject);
+		}
      }
 
     
