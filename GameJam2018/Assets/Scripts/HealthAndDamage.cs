@@ -9,16 +9,24 @@ public class HealthAndDamage : MonoBehaviour {
     private bool isDead;
 
     private int spriteSize = 150;
-    private List<Vector3> hearthsVectors;
+    private List<GameObject> hearts;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         Vector3 coordenadas = new Vector3(-1500, 1000, 0);
+        hearts = new List<GameObject>();
+        GameObject newHeart; 
 
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < playerHitPoints;)
         {
             for (int j = 0; j < 2; j++)
             {
-                Instantiate<GameObject>(heart, coordenadas, Quaternion.identity);
+                if (i < playerHitPoints)
+                {
+                    newHeart = Instantiate<GameObject>(heart, coordenadas, Quaternion.identity);
+                    hearts.Add(newHeart);
+                    i++;
+                }
                 coordenadas.x += spriteSize;
             }
             coordenadas.y -= spriteSize;
@@ -30,6 +38,7 @@ public class HealthAndDamage : MonoBehaviour {
     public void takeDamage(int damage)
     {
         Debug.Log("Tengo " + playerHitPoints + " de vida, tomando " + damage + " de daño");
+        hearts[playerHitPoints - 1].SetActive(false);
         playerHitPoints -= damage;
         if (playerHitPoints <= 0)
         {

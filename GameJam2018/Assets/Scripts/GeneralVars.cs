@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GeneralVars : MonoBehaviour {
 
-    public int healht = 3;
+    public int health = 3;
 
     [HideInInspector]
     public bool isDead = false;
@@ -17,13 +17,20 @@ public class GeneralVars : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (healht > 3)
-            healht = 3;
+        if (health > 3)
+            health = 3;
 
-        if (healht <= 0 && !isDead)
+        if (health <= 0 && !isDead)
         {
             isDead = true;
+            Restart();
         }
 
 	}
+
+    void Restart()
+    {
+        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
 }

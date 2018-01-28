@@ -5,19 +5,20 @@ using System;
 
 public class EnemyController : MonoBehaviour 
 {
-    [SerializeField]
-    private GameObject player;
 
     private AStar m_aStar;
     public float breakTime = 1.0f;
     public float scapeTime = 2.0f;
     public float deadTime = 5f;
+    public int enemyHealth = 3;
     private bool isFollow;
-    public bool isFinish;
+    private bool isFinish;
     public bool stolenLife;
+    private GeneralVars m_generalVars;
 
     private void Awake()
     {
+        m_generalVars = GameObject.Find("Scripts").GetComponent<GeneralVars>();
         m_aStar = GetComponent<AStar>();
     }
 
@@ -25,36 +26,63 @@ public class EnemyController : MonoBehaviour
     void Start () 
     {
         isFinish = false;
-        stolenLife=false;
+        stolenLife = false;
         isFollow = true;
         m_aStar.state = AStar.States.FollowToTarget;
 	}
 
-     void FixedUpdate()
+     void Update()
     {
-
+        //Muere
+        if (enemyHealth <= 0)
+        {
+            //Retorna el corazon al jugador
+            m_generalVars.health++;
+            DestroyEnemy();
+        }
     }
 
-      void OnTriggerEnter2D(Collider2D other)
-     {
-         if (other.gameObject.tag == "Player" && isFollow)
-         {
-             stolenLife = true;
-             isFollow = false;
-             //inicia el escape
-             StartCoroutine(Escape());
-             other.GetComponentInParent<HealthAndDamage>().takeDamage(1);
-         }
-         if(other.gameObject.tag == "Wall" && isFinish)
-         {
-             isFinish = false;
-             //
-             Invoke("DestroyEnemy", deadTime);
-         }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        //realiza un ataque
+        if (other.gameObject.tag == "Player" && isFollow)
+        {
+            //quita una vida
+            m_generalVars.health--;
+            //se adueña de la vida
+            stolenLife = true;
+            isFollow = false;
+            StartCoroutine(Escape());
+            other.GetComponentInParent<HealthAndDamage>().takeDamage(1);
+        }
+
+        if(other.gameObject.tag == "Wall" && isFinish)
+        {
+            isFinish = false;
+            Invoke("DestroyEnemy", deadTime);
+        }
+
 		if (other.gameObject.tag == "BORDER") {
 			Destroy(this.gameObject);
 		}
-     }
+
+        //Recibe daño
+        if (other.gameObject.tag == "HitBox" && enemyHealth > 0)
+        {
+            other.gameObject.SetActive(false);
+            if (m_generalVars.health == 3)
+            {
+                enemyHealth -= 1 ;
+            }else if (m_generalVars.health == 2)
+            {
+                enemyHealth -= 2;
+            }else if(m_generalVars.health == 1)
+            {
+                enemyHealth -= 3;
+            }
+
+        }
+    }
 
     
 	
@@ -77,6 +105,7 @@ public class EnemyController : MonoBehaviour
         m_aStar.state = AStar.States.DoNotFollowTheTarget;
     }
 
+    
     void DestroyEnemy()
     {
         Destroy(this.gameObject);

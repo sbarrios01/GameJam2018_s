@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Animator m_animator;
     private string direction = "";
     public AtackController[] ataques;
+    private float tiempo = 0.0f;
+    public float tiempoEntreAtaques = 0.5f;
     //public AudioClip soundMuerte;
     //public AudioClip soundCoin;
 
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        tiempo = Time.time;
     }
 
     // Update is called once per frame
@@ -74,8 +76,9 @@ public class PlayerController : MonoBehaviour
 
         moveVelocity = moveInput * moveSpeed;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && Time.time >= tiempo + tiempoEntreAtaques)
         {
+            tiempo = Time.time;
             Atack();
         }
 
@@ -122,21 +125,21 @@ public class PlayerController : MonoBehaviour
             m_animator.StopPlayback();
             SetAttack("rigthAttack");
             
-            ataques[0].StartAtack(m_GeneralVars.healht);
+            ataques[0].StartAtack(m_GeneralVars.health);
         }else if (direction == "left")
         {
             SetAttack("leftAttack");
-            ataques[1].StartAtack(m_GeneralVars.healht);
+            ataques[1].StartAtack(m_GeneralVars.health);
         }
         else if (direction == "up")
         {
             SetAttack("upAttack");
-            ataques[2].StartAtack(m_GeneralVars.healht);
+            ataques[2].StartAtack(m_GeneralVars.health);
         }
         else if (direction == "down")
         {
             SetAttack("downAttack");
-            ataques[3].StartAtack(m_GeneralVars.healht);
+            ataques[3].StartAtack(m_GeneralVars.health);
         }
         //yield return new WaitForSeconds(0.5f);
     }
