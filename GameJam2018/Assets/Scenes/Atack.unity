@@ -237,6 +237,18 @@ Prefab:
       value: 
       objectReference: {fileID: 1938012387602824, guid: 08b22e4f5df00ab4ab7543a7df6faa33,
         type: 2}
+    - target: {fileID: 114479523565079900, guid: 860f8e4cbe2726f42a1dbfef2d689804,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1977843109244850, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
+        type: 2}
+    - target: {fileID: 114479523565079900, guid: 860f8e4cbe2726f42a1dbfef2d689804,
+        type: 2}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 1265025429279382, guid: e43a82a2018a184449253a1475c5b374,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 860f8e4cbe2726f42a1dbfef2d689804, type: 2}
   m_IsPrefabParent: 0
@@ -625,6 +637,12 @@ Prefab:
       propertyPath: tiempoEntreAtaques
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114270701790928926, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
+        type: 2}
+      propertyPath: playerHitPoints
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114270701790928926, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
   m_IsPrefabParent: 0

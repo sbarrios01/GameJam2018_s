@@ -30,8 +30,7 @@ public class AStar : MonoBehaviour
     public float speed=0.05f;
     public float distanceMiniumToTarget = 2.3f;
 
-    Animator _Animations;
-
+    
     private List<int> sensorsActive= new List<int>();
     private float[] f;
     private float[] g;
@@ -48,7 +47,7 @@ public class AStar : MonoBehaviour
 
     void Awake()
     {
-        _Animations = GetComponent<Animator>();
+        target = GameObject.FindGameObjectWithTag("Player").transform; //Si quieren cambiar el target desde la interfaz de trabajo comenten esta linea
         bestSensor = -1;
         g = new float[sensors.Length];
         speed = Mathf.Abs(speed);

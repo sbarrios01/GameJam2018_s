@@ -37,9 +37,10 @@ public class EnemyController : MonoBehaviour
         if (enemyHealth <= 0)
         {
             //Retorna el corazon al jugador
-            m_generalVars.health++;
-            Debug.Log("Vida: " + m_generalVars.health + ", se recupera a: " + (m_generalVars.health + 1));
-            m_generalVars.player.GetComponent<HealthAndDamage>().recoverDamage(1);
+            m_generalVars.recoverDamage(1);
+            //m_generalVars.health++;
+           // Debug.Log("Vida: " + m_generalVars.health + ", se recupera a: " + (m_generalVars.health + 1));
+           // m_generalVars.player.GetComponent<HealthAndDamage>().recoverDamage(1);
             DestroyEnemy();
         }
     }
@@ -50,14 +51,15 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.tag == "Player" && isFollow)
         {
             //quita una vida
-            m_generalVars.health--;
+            //m_generalVars.health--;
             //se adueña de la vida
             stolenLife = true;
             isFollow = false;
             StartCoroutine(Escape());
             //Esta parte es necesaria para mostrar los corazones
             //Si sale un error por referencia nula solo agrega el script "HealthAndDamage" al player
-            other.GetComponentInParent<HealthAndDamage>().takeDamage(1);
+            m_generalVars.takeDamage(1);
+            
         }
 
         if(other.gameObject.tag == "Wall" && isFinish)
