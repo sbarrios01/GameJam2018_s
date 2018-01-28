@@ -5,6 +5,8 @@ using System;
 
 public class EnemyController : MonoBehaviour 
 {
+    [SerializeField]
+    private GameObject player;
 
     private AStar m_aStar;
     public float breakTime = 1.0f;
