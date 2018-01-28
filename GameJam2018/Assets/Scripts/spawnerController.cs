@@ -82,7 +82,7 @@ public class spawnerController : MonoBehaviour {
 	void Spawn ()
 	{
 
-		Instantiate (enemy[0], myRigidBody.position+new Vector2(0,-distancefromspawner),new Quaternion(0,0,0,0.0f));
+		Instantiate (enemy[Random.Range(0,enemy.Length)], myRigidBody.position+new Vector2(0,-distancefromspawner),new Quaternion(0,0,0,0.0f));
 		Invoke("Spawn", spawnTime+Random.value*spawnTime);
 	}
 
