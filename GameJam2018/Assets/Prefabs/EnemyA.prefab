@@ -464,6 +464,7 @@ MonoBehaviour:
   deadTime: 5
   enemyHealth: 3
   stolenLife: 0
+  player: {fileID: 1977843109244850, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
 --- !u!212 &212369466669035678
 SpriteRenderer:
   m_ObjectHideFlags: 1
