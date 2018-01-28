@@ -30,6 +30,7 @@ public class AStar : MonoBehaviour
     public float speed=0.05f;
     public float distanceMiniumToTarget = 2.3f;
 
+    Animator _Animations;
 
     private List<int> sensorsActive= new List<int>();
     private float[] f;
@@ -47,6 +48,7 @@ public class AStar : MonoBehaviour
 
     void Awake()
     {
+        _Animations = GetComponent<Animator>();
         bestSensor = -1;
         g = new float[sensors.Length];
         speed = Mathf.Abs(speed);
@@ -67,6 +69,22 @@ public class AStar : MonoBehaviour
             transform.position += directionV3 * speed;
             //---------------------------------------
             PossibleDirection();
+
+            //no se en que momento se programara el "intersect with player" pero 
+            //cuando lo hagan implementen el siguiente codigo para las animaciones:
+            //cuando ataca por la derecha: 
+            //_Animations.SetBool("RigthAttack", true);
+            //cuando ataca por la izquierda: 
+            //_Animations.SetBool("LeftAttack", true);
+            /*una vez que se ejecuto el codigo anterior se ejecutara el siguiente:
+                _Animations.SetBool("stolen", true);
+              aleatoriamente segun hernan entrara en cansancio despues de un tiempo,
+              ejecutar el siguiente codigo para la animacion de cansancio:
+              _Animations.SetBool("stolen", false)
+              _Animations.SetBool("tired", true)
+              (despues de un corto tiempo regresar al estado anterior:)
+             _Animations.SetBool("stolen", true)
+              _Animations.SetBool("tired", false) */
         }
         else
         {
