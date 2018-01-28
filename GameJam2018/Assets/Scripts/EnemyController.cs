@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using System;
 
 public class EnemyController : MonoBehaviour 
@@ -16,10 +17,13 @@ public class EnemyController : MonoBehaviour
     public bool stolenLife;
     private GeneralVars m_generalVars;
 
+    public GameObject score;
+
     private void Awake()
     {
         m_generalVars = GameObject.Find("Scripts").GetComponent<GeneralVars>();
         m_aStar = GetComponent<AStar>();
+
     }
 
     // Use this for initialization
@@ -38,10 +42,12 @@ public class EnemyController : MonoBehaviour
         {
             //Retorna el corazon al jugador
             m_generalVars.recoverDamage(1);
+            m_generalVars.addOnePoint();
             //m_generalVars.health++;
            // Debug.Log("Vida: " + m_generalVars.health + ", se recupera a: " + (m_generalVars.health + 1));
            // m_generalVars.player.GetComponent<HealthAndDamage>().recoverDamage(1);
             DestroyEnemy();
+     
         }
     }
 

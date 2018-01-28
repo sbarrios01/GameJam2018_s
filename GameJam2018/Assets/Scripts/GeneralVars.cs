@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GeneralVars : MonoBehaviour {
 
     public GameObject player;
+    public Text score;
 
     public int health;
     public int maxHealth;
@@ -19,6 +22,8 @@ public class GeneralVars : MonoBehaviour {
 	void Start () {
 
         maxHealth = health;
+
+        score.text = "0";
 
         Debug.Log("1.- Health:" +health);
         Vector3 coordenadas = new Vector3(-1500, 1000, 0);
@@ -86,5 +91,12 @@ public class GeneralVars : MonoBehaviour {
     {
         string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+    public void addOnePoint()
+    {
+        int myScore = Convert.ToInt32(score.text) + 1;
+
+        score.text = myScore.ToString();
     }
 }
