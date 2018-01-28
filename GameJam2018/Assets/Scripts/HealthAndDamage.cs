@@ -10,7 +10,11 @@ public class HealthAndDamage : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+	void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("Hubo una colision");
+    }
+
 	// Update is called once per frame
 	void Update () {
 		

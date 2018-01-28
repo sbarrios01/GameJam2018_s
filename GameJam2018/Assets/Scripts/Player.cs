@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
     public GameObject player; //player debe tener un rigidbody
     private Rigidbody2D myRigidBody;
