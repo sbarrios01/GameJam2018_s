@@ -63,30 +63,33 @@ public class Player2 : MonoBehaviour
     private void Attack()
     {
         _atackCooldown += Time.deltaTime;
-        if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'a')
+        if (_atackCooldown > _DeltaTime)
         {
-            _atackCooldown = 0;
-            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(0, 0, 0)));
-        }
-        else if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'w')
-        {
-            _atackCooldown = 0;
-            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(180, 180, 90)));
-        }
-        else if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime && _Direction == 'd')
-        {
-            _atackCooldown = 0;
-            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(0, 180, 0)));
-        }
-        else if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime && _Direction == 's')
-        {
-            _atackCooldown = 0;
-            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(-180, -180, -90)));
-        }
-        else if (Input.GetButtonDown("Fire1") && _atackCooldown > _DeltaTime)
-        {
-            _atackCooldown = 0;
-            Instantiate(_Atack, transform.position + _LastMovement, Quaternion.identity);
+            if (Input.GetButtonDown("Fire1") && _Direction == 'a')
+            {
+                _atackCooldown = 0;
+                Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(0, 0, 0)));
+            }
+            else if (Input.GetButtonDown("Fire1") && _Direction == 'w')
+            {
+                _atackCooldown = 0;
+                Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(180, 180, 90)));
+            }
+            else if (Input.GetButtonDown("Fire1") && _Direction == 'd')
+            {
+                _atackCooldown = 0;
+                Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(0, 180, 0)));
+            }
+            else if (Input.GetButtonDown("Fire1") && _Direction == 's')
+            {
+                _atackCooldown = 0;
+                Instantiate(_Atack, transform.position + _LastMovement, Quaternion.Euler(new Vector3(-180, -180, -90)));
+            }
+            else if (Input.GetButtonDown("Fire1"))
+            {
+                _atackCooldown = 0;
+                Instantiate(_Atack, transform.position + _LastMovement, Quaternion.identity);
+            }
         }
     }
 
@@ -103,29 +106,30 @@ public class Player2 : MonoBehaviour
     {
         //_EjeX = Input.GetAxis("Horizontal");
         //_EjeY = Input.GetAxis("Vertical");
+        int force = 200;
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             SetAnimation("left");
-            myRigidBody.velocity = new Vector3(-200, 0, 0);
+            myRigidBody.velocity = new Vector3(-force, 0, 0);
             _LastMovement = new Vector3(-_distance_player_attack, 0, 0);
 
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             SetAnimation("rigth");
-            myRigidBody.velocity = new Vector3(200, 0, 0);
+            myRigidBody.velocity = new Vector3(force, 0, 0);
             _LastMovement = new Vector3(_distance_player_attack, 0, 0);
         }
         else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             SetAnimation("up");
-            myRigidBody.velocity = new Vector3(0, 200, 0);
+            myRigidBody.velocity = new Vector3(0, force, 0);
             _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             SetAnimation("down");
-            myRigidBody.velocity = new Vector3(0, -200, 0);
+            myRigidBody.velocity = new Vector3(0, -force, 0);
             _LastMovement = new Vector3(0, -_distance_player_attack - 30, 0);
         }
 		
