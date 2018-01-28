@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class spawnerController : MonoBehaviour {
 	public GameObject spawner; 
-	public GameObject enemy;
+	public GameObject [] enemy;
 	private Rigidbody2D myRigidBody;
 	[SerializeField]
 	private int speed;
@@ -25,7 +25,7 @@ public class spawnerController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _Animations = GetComponent<Animator>();
-        myRigidBody = spawner.GetComponent<Rigidbody2D>();
+        myRigidBody = GetComponent<Rigidbody2D>();
 		Random.seed = (int)System.DateTime.Now.Ticks;
 		Invoke("Spawn", spawnTime);
         direction = true;
@@ -82,7 +82,7 @@ public class spawnerController : MonoBehaviour {
 	void Spawn ()
 	{
 
-		Instantiate (enemy, myRigidBody.position+new Vector2(0,-distancefromspawner),new Quaternion(0,0,0,0.0f));
+		Instantiate (enemy[0], myRigidBody.position+new Vector2(0,-distancefromspawner),new Quaternion(0,0,0,0.0f));
 		Invoke("Spawn", spawnTime+Random.value*spawnTime);
 	}
 
