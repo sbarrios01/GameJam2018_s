@@ -12,13 +12,15 @@ public class spawnerController : MonoBehaviour {
 	private float spawnTime;
 	[SerializeField]
 	private int distancefromspawner;
-	private bool direction = true;
+
+    private bool direction;
 	[SerializeField]
 	private Vector2 Startposition = new Vector2 (-800, 800);
 
     Animator _Animations;
     private float _EjeX;
     private float _EjeY;
+    private float _random;
 
     // Use this for initialization
     void Start () {
@@ -26,7 +28,7 @@ public class spawnerController : MonoBehaviour {
         myRigidBody = spawner.GetComponent<Rigidbody2D>();
 		Random.seed = (int)System.DateTime.Now.Ticks;
 		Invoke("Spawn", spawnTime);
-
+        direction = true;
 
     }
 
@@ -37,7 +39,6 @@ public class spawnerController : MonoBehaviour {
 
 	private void Movement()
 	{
-
         if(this.transform.position.x < 0)
         {
             _Animations.SetBool("Rigth", false);
@@ -47,11 +48,27 @@ public class spawnerController : MonoBehaviour {
             _Animations.SetBool("Rigth", true);
         }
 
-		if (direction) {
-			myRigidBody.velocity = new Vector3 (speed, 0, 0);
-        }
-        else {
-			myRigidBody.velocity = new Vector3 (-speed, 0, 0);
+        //movimientos aleatorios 
+        if(direction)
+        {
+            if (_random < 5)
+            {
+                myRigidBody.velocity = new Vector3 (speed, 0, 0);
+            }
+            else if(_random > 5)
+            {
+                myRigidBody.velocity = new Vector3(-speed, 0, 0);
+            }
+        else{
+                if (_random < 5)
+                {
+                    myRigidBody.velocity = new Vector3(0, speed, 0);
+                }
+                else if (_random > 5)
+                {
+                    myRigidBody.velocity = new Vector3(0, -speed, 0);
+                }
+            }
         }
     }
 
@@ -64,8 +81,11 @@ public class spawnerController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Wall" )
-			direction=!direction;
+        if (other.gameObject.tag == "Wall")
+        {
+            direction = !direction;
+            _random = Random.Range(0f, 10f);
+        }
 		if (other.gameObject.tag == "BORDER") {
 			Instantiate (spawner, Startposition,new Quaternion(0,0,0,0.0f));
 			Destroy(this.gameObject);
