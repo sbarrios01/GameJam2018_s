@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/damageImplementationTest.unity
     guid: 9faf0a6c348815046952b7688bf5f0d2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/initial.unity
     guid: be834036f50970b4ca549b01e4c7f408
+  - enabled: 1
+    path: Assets/Scenes/Atack.unity
+    guid: 5b277d536904204429da5f7919187df3
   - enabled: 1
     path: Assets/Scenes/about.unity
     guid: 2e6c7416cd6f1464bbbd60b39249fd0a
