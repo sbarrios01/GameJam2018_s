@@ -164,7 +164,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -260,7 +260,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25330245
   m_TransitionOffset: 0
   m_ExitTime: 0.16633272
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -308,7 +308,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -380,7 +380,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.16216539
   m_TransitionOffset: 0.22189774
   m_ExitTime: 0.22761549
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -404,7 +404,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.06664528
   m_TransitionOffset: 0
   m_ExitTime: 0.66143554
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -500,7 +500,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.30182487
   m_TransitionOffset: 0
   m_ExitTime: 0.66605836
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -629,7 +629,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: rigth_movement
-  m_Speed: 4.67
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101076951641270608}

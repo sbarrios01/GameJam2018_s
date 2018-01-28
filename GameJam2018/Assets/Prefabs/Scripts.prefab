@@ -72,5 +72,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd23db02d9d81e429f1847cad32774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healht: 3
+  health: 3
   isDead: 0
