@@ -16,6 +16,10 @@ public class EnemyController : MonoBehaviour
     private bool isFinish;
     public bool stolenLife;
     private GeneralVars m_generalVars;
+    
+[SerializeField]
+    private GameObject player;
+    Animator animator;
 
     public GameObject score;
 
@@ -29,6 +33,7 @@ public class EnemyController : MonoBehaviour
     // Use this for initialization
     void Start () 
     {
+        animator = GetComponent<Animator>();
         isFinish = false;
         stolenLife = false;
         isFollow = true;
@@ -50,7 +55,13 @@ public class EnemyController : MonoBehaviour
      
         }
     }
-
+    private void SetAnimation()
+    {
+        animator.SetBool("rigtAttack", false);
+        animator.SetBool("leftAttack", false);
+        animator.SetBool("stolen", false);
+        animator.SetBool("tired", false);
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         //realiza un ataque
@@ -59,8 +70,21 @@ public class EnemyController : MonoBehaviour
             //quita una vida
             //m_generalVars.health--;
             //se adueña de la vida
+            if(player.transform.position.x < this.gameObject.transform.position.x)
+            {
+                SetAnimation();
+                animator.SetBool("leftAttack", true);
+
+            }
+            if(player.transform.position.x > this.gameObject.transform.position.x)
+            {
+                SetAnimation();
+                animator.SetBool("rigthAttack", true);
+            }
+            
             stolenLife = true;
             isFollow = false;
+            animator.SetBool("stolen", true);
             StartCoroutine(Escape());
             //Esta parte es necesaria para mostrar los corazones
             //Si sale un error por referencia nula solo agrega el script "HealthAndDamage" al player
@@ -105,7 +129,9 @@ public class EnemyController : MonoBehaviour
             m_aStar.state = AStar.States.DoNotFollowTheTarget;
             yield return new WaitForSeconds(scapeTime);
             m_aStar.state = AStar.States.Stand;
+            animator.SetBool("tired", true);
             yield return new WaitForSeconds(breakTime);
+            SetAnimation();
         }
         //Desabilitamos todo los sensores
         for (int i = 0; i < m_aStar.sensors.Length; i++)
