@@ -49,31 +49,34 @@ public class spawnerController : MonoBehaviour {
         }
 
         //movimientos aleatorios 
-        if(direction)
-        {
-            if (_random < 5)
+		if (direction) {
+			myRigidBody.velocity = new Vector3 (speed, 0, 0);
+		} else {
+			myRigidBody.velocity = new Vector3 (-speed, 0, 0);
+		}
+		/*
+		 *  if (_random < 5)
             {
                 //myRigidBody.velocity = new Vector3 (speed, 0, 0);
-                this.transform.Translate(new Vector3(speed, 0, 0) * speed/10 * Time.deltaTime);
+                this.transform.Translate(new Vector3(speed, 0, 0)  * Time.deltaTime);
             }
             else if(_random > 5)
             {
                // myRigidBody.velocity = new Vector3(-speed, 0, 0);
-                this.transform.Translate(new Vector3(-speed, 0, 0) * speed / 10 * Time.deltaTime);
+                this.transform.Translate(new Vector3(-speed, 0, 0)  * Time.deltaTime);
             }
         else{
                 if (_random < 5)
                 {
                     //myRigidBody.velocity = new Vector3(0, speed, 0);
-                    this.transform.Translate(new Vector3(0, speed, 0) * speed / 10 * Time.deltaTime);
+                    this.transform.Translate(new Vector3(0, speed, 0)  * Time.deltaTime);
                 }
                 else if (_random > 5)
                 {
                     //myRigidBody.velocity = new Vector3(0, -speed, 0);
-                    this.transform.Translate(new Vector3(0, -speed, 0) * speed / 10 * Time.deltaTime);
+                    this.transform.Translate(new Vector3(0, -speed, 0)  * Time.deltaTime);
                 }
-            }
-        }
+		 */
     }
 
 	void Spawn ()
@@ -88,13 +91,11 @@ public class spawnerController : MonoBehaviour {
         if (other.gameObject.tag == "Wall")
         {
             direction = !direction;
-            _random = Random.Range(0f, 10f);
+            //_random = Random.Range(0f, 10f);
         }
 		if (other.gameObject.tag == "BORDER") {
-			//Instantiate (spawner, Startposition,new Quaternion(0,0,0,0.0f));
-			//Destroy(this.gameObject);
-            direction = !direction;
-            _random = Random.Range(0f, 10f);
+			Instantiate (spawner, Startposition,new Quaternion(0,0,0,0.0f));
+			Destroy(this.gameObject);
         }
 	}
 
