@@ -366,8 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebbe71a733c4c640b0b6159b5a02850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 842257271}
-  enemy: {fileID: 1114125735117864, guid: c4e2a0072f7849941a30a372e2dc15c6, type: 2}
+  spawner: {fileID: 1243811592054652, guid: 8c7fc963f3a513543a3d60916f2ec046, type: 2}
+  enemy:
+  - {fileID: 1114125735117864, guid: c4e2a0072f7849941a30a372e2dc15c6, type: 2}
   speed: 300
   spawnTime: 4
   distancefromspawner: 160
