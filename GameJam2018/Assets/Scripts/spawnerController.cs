@@ -16,7 +16,8 @@ public class spawnerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		myRigidBody = spawner.GetComponent<Rigidbody2D>();
-		InvokeRepeating ("Spawn", spawnTime, spawnTime);
+		Random.seed = (int)System.DateTime.Now.Ticks;
+		Invoke("Spawn", spawnTime);
 	}
 	
 	void FixedUpdate()
@@ -41,6 +42,7 @@ public class spawnerController : MonoBehaviour {
 	{
 
 		Instantiate (enemy, myRigidBody.position+new Vector2(0,-distancefromspawner),new Quaternion(0,0,0,0.0f));
+		Invoke("Spawn", spawnTime+Random.value*spawnTime);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
