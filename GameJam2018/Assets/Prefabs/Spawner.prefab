@@ -416,6 +416,7 @@ MonoBehaviour:
   speed: 150
   spawnTime: 4
   distancefromspawner: 160
+  Startposition: {x: -800, y: 800}
 --- !u!114 &114924851557339442
 MonoBehaviour:
   m_ObjectHideFlags: 1
