@@ -636,6 +636,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd9540d9dcd3c0c4582249af77a01d37, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1010992562 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1977843109244850, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
+    type: 2}
+  m_PrefabInternal: {fileID: 2077498740}
+--- !u!81 &1010992568
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010992562}
+  m_Enabled: 1
 --- !u!1 &1134963074
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +760,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -20
-  m_Sprite: {fileID: 21300000, guid: 10387cc84b0eec84aae61f9222641659, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89bdfa5ccfdc8e24fa8c030387fd322f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

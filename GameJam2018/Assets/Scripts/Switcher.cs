@@ -13,4 +13,11 @@ public class Switcher : MonoBehaviour {
     {
         SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
+
 }

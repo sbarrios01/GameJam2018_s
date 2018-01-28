@@ -46,8 +46,10 @@ public class EnemyController : MonoBehaviour
         if (enemyHealth <= 0)
         {
             //Retorna el corazon al jugador
-            m_generalVars.recoverDamage(1);
-            m_generalVars.addOnePoint();
+            if (stolenLife) {
+                m_generalVars.recoverDamage(1);
+                m_generalVars.addOnePoint();
+            }
             //m_generalVars.health++;
            // Debug.Log("Vida: " + m_generalVars.health + ", se recupera a: " + (m_generalVars.health + 1));
            // m_generalVars.player.GetComponent<HealthAndDamage>().recoverDamage(1);
