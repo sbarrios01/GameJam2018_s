@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour
              isFollow = false;
              //inicia el escape
              StartCoroutine(Escape());
+             other.GetComponentInParent<HealthAndDamage>().takeDamage(1);
          }
          if(other.gameObject.tag == "Wall" && isFinish)
          {

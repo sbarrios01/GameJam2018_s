@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveVelocity;
     private GeneralVars m_GeneralVars;
     private Animator m_animator;
+    private string direction = "";
+    public AtackController[] ataques;
     //public AudioClip soundMuerte;
     //public AudioClip soundCoin;
 
@@ -30,8 +32,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");*/
 
         if (Input.GetButton("Horizontal"))
         {
@@ -40,10 +40,13 @@ public class PlayerController : MonoBehaviour
             {
                 //DERECHA
                 SetAnimation("rigth");
-            }else
+                direction = "rigth";
+            }
+            else
             {
                 //IZQUIERDA
                 SetAnimation("left");
+                direction = "left";
             }
         }
 
@@ -54,11 +57,13 @@ public class PlayerController : MonoBehaviour
             {
                 //ARRIBA
                 SetAnimation("up");
+                direction = "up";
             }
             else
             {
                 //ABAJO
                 SetAnimation("down");
+                direction = "down";
             }
         }
 
@@ -71,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton("Jump"))
         {
-            StartCoroutine(Atack());
+            Atack();
         }
 
     }
@@ -90,16 +95,31 @@ public class PlayerController : MonoBehaviour
 
     private void SetAnimation(string name)
     {
+        m_animator.SetBool("rigth", false);
         m_animator.SetBool("left", false);
         m_animator.SetBool("up", false);
-        m_animator.SetBool("rigth", false);
         m_animator.SetBool("down", false);
         m_animator.SetBool(name, true);
     }
 
-    IEnumerator Atack()
+    public void Atack()
     {
-        yield return new WaitForSeconds(0.5f);
+        if (direction == "rigth")
+        {
+            ataques[0].StartAtack(m_GeneralVars.healht);
+        }else if (direction == "left")
+        {
+            ataques[1].StartAtack(m_GeneralVars.healht);
+        }
+        else if (direction == "up")
+        {
+            ataques[2].StartAtack(m_GeneralVars.healht);
+        }
+        else if (direction == "down")
+        {
+            ataques[3].StartAtack(m_GeneralVars.healht);
+        }
+        //yield return new WaitForSeconds(0.5f);
     }
 
 }
