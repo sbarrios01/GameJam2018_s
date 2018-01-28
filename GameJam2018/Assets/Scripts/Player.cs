@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private float _EjeX;      //movimiento en el eje x por velocidad
     private float _EjeY;      //movimiento en el eje y por velocidad
 
+     Animator _Animations;
+
     [SerializeField]
     public float LocationX;
     [SerializeField]
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
     const int Screen_Heigth = 1115;
     void Start()
     {
+        _Animations = GetComponent<Animator>();
         myRigidBody = player.GetComponent<Rigidbody2D>();
         _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
         _atackCooldown = 0;
@@ -52,6 +55,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         Movement();
         Attack();
     }
@@ -86,28 +90,41 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void SetAnimation(string name)
+    {
+        _Animations.SetBool("left", false);
+        _Animations.SetBool("up", false);
+        _Animations.SetBool("rigth", false);
+        _Animations.SetBool("down", false);
+        _Animations.SetBool(name, true);
+    }
+
     private void Movement()
     {
         //_EjeX = Input.GetAxis("Horizontal");
         //_EjeY = Input.GetAxis("Vertical");
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
+            SetAnimation("left");
             myRigidBody.velocity = new Vector3(-200, 0, 0);
             _LastMovement = new Vector3(-_distance_player_attack, 0, 0);
 
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
+            SetAnimation("rigth");
             myRigidBody.velocity = new Vector3(200, 0, 0);
             _LastMovement = new Vector3(_distance_player_attack, 0, 0);
         }
         else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
+            SetAnimation("up");
             myRigidBody.velocity = new Vector3(0, 200, 0);
             _LastMovement = new Vector3(0, _distance_player_attack + 30, 0);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
+            SetAnimation("down");
             myRigidBody.velocity = new Vector3(0, -200, 0);
             _LastMovement = new Vector3(0, -_distance_player_attack - 30, 0);
         }
