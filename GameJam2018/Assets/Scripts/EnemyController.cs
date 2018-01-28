@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     public float deadTime = 5f;
     private bool isFollow;
     public bool isFinish;
+    public bool stolenLife;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour
     void Start () 
     {
         isFinish = false;
+        stolenLife=false;
         isFollow = true;
         m_aStar.state = AStar.States.FollowToTarget;
 	}
@@ -35,7 +37,7 @@ public class EnemyController : MonoBehaviour
      {
          if (other.gameObject.tag == "Player" && isFollow)
          {
-
+             stolenLife = true;
              isFollow = false;
              //inicia el escape
              StartCoroutine(Escape());
