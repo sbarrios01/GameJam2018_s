@@ -49,6 +49,9 @@ public class spawnerController : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Wall" )
 			direction=!direction;
+		if (other.gameObject.tag == "BORDER") {
+			Destroy(this.gameObject);
+		}
 	}
 
 }

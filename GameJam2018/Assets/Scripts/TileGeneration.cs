@@ -10,8 +10,7 @@ public class TileGeneration : MonoBehaviour {
     private float tileSize = 120;
 
 
-    public GameObject wall;
-    public GameObject empty;
+	public GameObject [] tiles;
     //                           1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
     private int[] map= new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 //1
                                 ,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 //2
@@ -48,15 +47,7 @@ public class TileGeneration : MonoBehaviour {
         {
             for(int j = 0; j < maxTiles; j++)
             {
-                if (map[k] == 0)
-                {
-
-                    Instantiate<GameObject>(wall, coordenadas, Quaternion.identity);
-                }
-                else if(map[k] == 1)
-                {
-                    Instantiate<GameObject>(empty, coordenadas, Quaternion.identity);
-                }
+				Instantiate<GameObject>(tiles[map[k]], coordenadas, Quaternion.identity);
                 coordenadas.x += tileSize;
                 k++;
 				/*/-----
