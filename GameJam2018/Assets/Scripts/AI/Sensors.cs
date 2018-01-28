@@ -11,13 +11,13 @@ public class Sensors : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Wall")
             sensor = false;
     }
 
      void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Wall" )
         sensor = true;
     }
 

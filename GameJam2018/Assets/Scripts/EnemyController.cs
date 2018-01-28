@@ -9,7 +9,9 @@ public class EnemyController : MonoBehaviour
     private AStar m_aStar;
     public float breakTime = 1.0f;
     public float scapeTime = 2.0f;
-    private bool isFollow = true;
+    public float deadTime = 5f;
+    private bool isFollow;
+    public bool isFinish;
 
     private void Awake()
     {
@@ -19,40 +21,56 @@ public class EnemyController : MonoBehaviour
     // Use this for initialization
     void Start () 
     {
+        isFinish = false;
+        isFollow = true;
         m_aStar.state = AStar.States.FollowToTarget;
 	}
 
      void FixedUpdate()
     {
-        try
-        {
-            //Si un sensor toco al jugador
-            bool sensonr1 = m_aStar.sensors[0].GetComponent<Sensors>().sensor;
-            bool sensonr2 = m_aStar.sensors[1].GetComponent<Sensors>().sensor;
-            bool sensonr3 = m_aStar.sensors[2].GetComponent<Sensors>().sensor;
-            bool sensonr4 = m_aStar.sensors[3].GetComponent<Sensors>().sensor;
 
-            if ((sensonr1 || sensonr2 || sensonr3 || sensonr4) && isFollow)
-            {
+    }
 
-                isFollow = false;
-                //inicia el escape
-                StartCoroutine(Escape());
-            }
-        }catch(Exception e)
-        {
-            Debug.LogWarning(e.Message);
-        }
+      void OnTriggerEnter2D(Collider2D other)
+     {
+         if (other.gameObject.tag == "Player" && isFollow)
+         {
+
+             isFollow = false;
+             //inicia el escape
+             StartCoroutine(Escape());
+         }
+         if(other.gameObject.tag == "Wall" && isFinish)
+         {
+             isFinish = false;
+             //
+             Invoke("DestroyEnemy", deadTime);
+         }
      }
+
+    
 	
     private IEnumerator Escape()
     {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) 
+        {
             m_aStar.state = AStar.States.DoNotFollowTheTarget;
             yield return new WaitForSeconds(scapeTime);
             m_aStar.state = AStar.States.Stand;
             yield return new WaitForSeconds(breakTime);
         }
+        //Desabilitamos todo los sensores
+        for (int i = 0; i < m_aStar.sensors.Length; i++)
+        {
+            m_aStar.sensors[i].SetActive(false);
+        }
+        //----------------------------------
+        isFinish = true;
         m_aStar.state = AStar.States.DoNotFollowTheTarget;
+    }
+
+    void DestroyEnemy()
+    {
+        Destroy(this.gameObject);
     }
 }
