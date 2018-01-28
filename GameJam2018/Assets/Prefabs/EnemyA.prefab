@@ -391,7 +391,7 @@ MonoBehaviour:
   - {fileID: 1457409196123232}
   - {fileID: 1931170560612144}
   - {fileID: 1811106820042404}
-  target: {fileID: 4725812356886590, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
+  target: {fileID: 0}
   state: 0
   movement: 1
   speed: 5
