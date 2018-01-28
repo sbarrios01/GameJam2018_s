@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 50251750732010198}
   - component: {fileID: 114592697741667510}
   - component: {fileID: 61714648477212568}
-  - component: {fileID: 95216013219559974}
+  - component: {fileID: 95509074729672936}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -357,7 +357,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.4, y: 6.45}
   m_EdgeRadius: 0
---- !u!95 &95216013219559974
+--- !u!95 &95509074729672936
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -366,7 +366,7 @@ Animator:
   m_GameObject: {fileID: 1243811592054652}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba2b2a551743aaa42bf9ebada5714dee, type: 2}
+  m_Controller: {fileID: 9100000, guid: b625ee08515940c419e11a6122de152e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
