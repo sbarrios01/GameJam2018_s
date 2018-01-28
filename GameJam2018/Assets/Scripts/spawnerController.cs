@@ -16,33 +16,44 @@ public class spawnerController : MonoBehaviour {
 	[SerializeField]
 	private Vector2 Startposition = new Vector2 (-800, 800);
 
+    Animator _Animations;
+    private float _EjeX;
+    private float _EjeY;
 
-
-
-	// Use this for initialization
-	void Start () {
-		myRigidBody = spawner.GetComponent<Rigidbody2D>();
+    // Use this for initialization
+    void Start () {
+        _Animations = GetComponent<Animator>();
+        myRigidBody = spawner.GetComponent<Rigidbody2D>();
 		Random.seed = (int)System.DateTime.Now.Ticks;
 		Invoke("Spawn", spawnTime);
-	}
-	
-	void FixedUpdate()
+
+
+    }
+
+    void FixedUpdate()
 	{
 		Movement();
 	}
 
 	private void Movement()
 	{
-		//_EjeX = Input.GetAxis("Horizontal");
-		//_EjeY = Input.GetAxis("Vertical");
+
+        if(this.transform.position.x < 0)
+        {
+            _Animations.SetBool("Rigth", false);
+        }
+        else
+        {
+            _Animations.SetBool("Rigth", true);
+        }
+
 		if (direction) {
 			myRigidBody.velocity = new Vector3 (speed, 0, 0);
-
-
-		} else {
+        }
+        else {
 			myRigidBody.velocity = new Vector3 (-speed, 0, 0);
-		} 
-	}
+        }
+    }
 
 	void Spawn ()
 	{
