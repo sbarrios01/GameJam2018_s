@@ -391,7 +391,7 @@ MonoBehaviour:
   - {fileID: 1457409196123232}
   - {fileID: 1931170560612144}
   - {fileID: 1811106820042404}
-  target: {fileID: 0}
+  target: {fileID: 4725812356886590, guid: 755cb07f5fe2d8d4990295cd5bc7367a, type: 2}
   state: 0
   movement: 1
   speed: 5
@@ -459,10 +459,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2923ac740c7a4ba44994bf5af911fc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   breakTime: 1
   scapeTime: 2
   deadTime: 5
   isFinish: 0
+  stolenLife: 0
 --- !u!212 &212369466669035678
 SpriteRenderer:
   m_ObjectHideFlags: 1
