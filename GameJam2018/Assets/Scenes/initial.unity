@@ -211,6 +211,17 @@ Prefab:
       value: 
       objectReference: {fileID: 1977843109244850, guid: 755cb07f5fe2d8d4990295cd5bc7367a,
         type: 2}
+    - target: {fileID: 114479523565079900, guid: 860f8e4cbe2726f42a1dbfef2d689804,
+        type: 2}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479523565079900, guid: 860f8e4cbe2726f42a1dbfef2d689804,
+        type: 2}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 1265025429279382, guid: e43a82a2018a184449253a1475c5b374,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 860f8e4cbe2726f42a1dbfef2d689804, type: 2}
   m_IsPrefabParent: 0
