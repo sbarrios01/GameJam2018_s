@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
 
     public float moveSpeed;
+    public AudioSource audioS;
+    public AudioClip audioC;
     private Rigidbody2D m_rigidBody2d;
     private Vector3 moveInput;
     private Vector3 moveVelocity;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        audioS.clip = audioC;
         tiempo = Time.time;
     }
 
@@ -124,7 +127,7 @@ public class PlayerController : MonoBehaviour
         {
             m_animator.StopPlayback();
             SetAttack("rigthAttack");
-            
+            audioS.Play();
             ataques[0].StartAtack(m_GeneralVars.health);
         }else if (direction == "left")
         {
