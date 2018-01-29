@@ -273,7 +273,7 @@ PlayerSettings:
       m_Height: 512
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
+      m_Icon: {fileID: 2800000, guid: b60e652bb742a8e4f98878e828e3fe7a, type: 3}
       m_Width: 256
       m_Height: 256
       m_Kind: 0
@@ -682,9 +682,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 82ae183d-4157-427f-8b82-87eea221c071
-  projectName: GameJam2018 (1)
-  organizationId: marco-3502131
+  cloudProjectId: f52f6390-177a-48a3-a1ab-64c13cc0ac6f
+  projectName: GameJam2018
+  organizationId: sergio_barrios260
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
