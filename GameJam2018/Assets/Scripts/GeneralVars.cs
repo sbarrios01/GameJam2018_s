@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GeneralVars : MonoBehaviour {
 
     public GameObject player;
     public Text score;
+
+    public Text txtTime;
 
     public int health;
     public int maxHealth;
@@ -17,9 +21,12 @@ public class GeneralVars : MonoBehaviour {
     private List<GameObject> hearts;
     [HideInInspector]
     public bool isDead = false;
+    public int tiempoPartida = 0;
 
 	// Use this for initialization
 	void Start () {
+
+        StartCoroutine(TiempoPartida());
 
         maxHealth = health;
 
@@ -56,8 +63,9 @@ public class GeneralVars : MonoBehaviour {
         if (health <= 0)
         {
             isDead = true;
-            string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+            //string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            //UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(3, LoadSceneMode.Single);
         }
     }
 
@@ -89,8 +97,9 @@ public class GeneralVars : MonoBehaviour {
 
     void Restart()
     {
-        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        //string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
 
     public void addOnePoint()
@@ -98,5 +107,15 @@ public class GeneralVars : MonoBehaviour {
         int myScore = Convert.ToInt32(score.text) + 1;
 
         score.text = myScore.ToString();
+    }
+
+    IEnumerator TiempoPartida()
+    {
+        do
+        {
+            tiempoPartida++;
+            yield return new WaitForSeconds(1);
+            txtTime.text = tiempoPartida + "";
+        } while (true);
     }
 }

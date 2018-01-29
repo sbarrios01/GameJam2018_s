@@ -109,7 +109,7 @@ public class AStar : MonoBehaviour
             h[i] = Vector3.Distance(sensors[sensorsActive[i]].transform.position, target.position);
             //----------------------------------------------------------------------------------------------------
             _g[i] = Vector3.Distance(sensors[sensorsActive[i]].transform.position, transform.position);
-            Debug.DrawLine(sensors[sensorsActive[i]].transform.position, transform.position,Color.red);
+            //Debug.DrawLine(sensors[sensorsActive[i]].transform.position, transform.position,Color.red);
         }
         //Calculamos el valor numerico
         for (int i = 0; i < sensorsActive.Count; i++)
@@ -183,7 +183,7 @@ public class AStar : MonoBehaviour
 
      void OnDrawGizmos()
     {
-        Gizmos.DrawLine(target.transform.position,transform.position);
+       // Gizmos.DrawLine(target.transform.position,transform.position);
     }
 
 

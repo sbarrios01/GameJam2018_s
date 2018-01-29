@@ -83,8 +83,11 @@ public class spawnerController : MonoBehaviour {
 	{
 
 		Instantiate (enemy[Random.Range(0,enemy.Length)], myRigidBody.position+new Vector2(0,-distancefromspawner),new Quaternion(0,0,0,0.0f));
-		Invoke("Spawn", spawnTime+Random.value*spawnTime);
-	}
+        //Invoke("Spawn", spawnTime + Random.value*spawnTime);
+        if(spawnTime > 0.5)
+            spawnTime *= 0.95f;
+        Invoke("Spawn", spawnTime);
+    }
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
